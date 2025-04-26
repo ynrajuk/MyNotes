@@ -1,8 +1,12 @@
-
-
+#Resource group creation
+az group creation --name myrg --location eastus
 
 # Vnet and subnet creation
  az network vnet create --name myrgvnet \
                         --resource-group myrm --address-prefixes 10.0.0.0/16 --subnet-name myrgsub1 \
                         --subnet-prefixes 10.0.10.0/24
 
+#Windos machine creation with vnet and subnet 
+az vm create --name mywin10 --resource-group myrm --image "MicrosoftWindowsDesktop:Windows-10:win10-22h2-ent-g2:latest" \
+            --admin-username ynrajuk --admin-password Anbu@24152415 --vnet-name myrgvnet --subnet --myrgsub1 --public-ip-address " " \
+            --nic-delete-option delete --security-type standard
